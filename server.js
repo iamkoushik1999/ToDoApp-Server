@@ -6,6 +6,9 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT;
 
+// Requires
+const errorHandler = require("./middleware/errorMiddleware");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -13,5 +16,8 @@ app.use(cors("*"));
 
 // Test Route
 app.get("/", (req, res) => res.send("Server Running Successfully!"));
+
+// Error Handler Middleware
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`.cyan));
