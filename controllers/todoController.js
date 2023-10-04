@@ -15,3 +15,19 @@ exports.todoList = asyncHandler(async (req, res) => {
   }
   res.status(200).json(todolist);
 });
+
+// POST
+// CREATE To Do
+exports.createToDo = asyncHandler(async (req, res) => {
+  const { text } = req.body;
+  if (!text) {
+    res.status(404);
+    throw new Error("Please fill all the fields");
+  }
+
+  const todo = await todoModel.create({
+    text,
+  });
+
+  res.status(201).json({ message: "To Do created succesfully", todo });
+});
