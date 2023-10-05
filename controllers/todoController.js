@@ -31,3 +31,15 @@ exports.createToDo = asyncHandler(async (req, res) => {
 
   res.status(201).json({ message: "To Do created succesfully", todo });
 });
+
+// PUT
+// Update To Do
+exports.updateToDo = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const newToDo = await todoModel.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json({ message: "To Do updated succesfully", newToDo });
+});
