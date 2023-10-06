@@ -43,3 +43,16 @@ exports.updateToDo = asyncHandler(async (req, res) => {
 
   res.status(200).json({ message: "To Do updated succesfully", newToDo });
 });
+
+// DELETE
+// DELETE To Do
+exports.deleteToDo = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const todoItem = await todoModel.findByIdAndDelete(id);
+  if (!todoItem) {
+    res.status(404);
+    throw new Error("No to do item Found");
+  }
+
+  res.status(200).json({ message: "To Do Deleted Succesfully" });
+});
