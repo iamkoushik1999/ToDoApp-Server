@@ -12,6 +12,9 @@ connectDB();
 // Requires
 const errorHandler = require("./middleware/errorMiddleware");
 
+// Routes
+const todoRoutes = require("./routes/todoRoutes");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -19,6 +22,9 @@ app.use(cors("*"));
 
 // Test Route
 app.get("/", (req, res) => res.send("Server Running Successfully!"));
+
+// Routes
+app.use("/todo", todoRoutes);
 
 // Error Handler Middleware
 app.use(errorHandler);

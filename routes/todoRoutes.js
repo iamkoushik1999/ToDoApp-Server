@@ -5,7 +5,7 @@ const {
   createToDo,
   updateToDo,
   deleteToDo,
-} = require("../controllers/todoCOntroller");
+} = require("../controllers/todoController");
 
 // ----------------------------------------------------------- To Do -----------------------------------------------------------
 // GET
