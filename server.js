@@ -21,7 +21,12 @@ app.use(cookieParser());
 app.use(cors("*"));
 
 // Test Route
-app.get("/", (req, res) => res.send("Server Running Successfully!"));
+// app.get("/", (req, res) => res.send("Server Running Successfully!"));
+app.get("/", (req, res) =>
+  res.send(
+    `<h1>Site is Working. Click <a href=${process.env.FRONTEND_URL} > here </a> to visit frontend </h1>`
+  )
+);
 
 // Routes
 app.use("/todo", todoRoutes);
